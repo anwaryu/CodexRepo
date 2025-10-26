@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chore Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login/Register Section -->
+        <div id="auth-section" class="section">
+            <div class="container">
+                <h1>🏠 Family Chore Tracker</h1>
+                
+                <div id="login-form" class="auth-form">
+                    <h2>Login</h2>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button onclick="login()">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+                </div>
+
+                <div id="register-form" class="auth-form" style="display: none;">
+                    <h2>Register</h2>
+                    <input type="text" id="register-username" placeholder="Username" required>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <input type="text" id="register-family-name" placeholder="Family Name" required>
+                    <button onclick="register()">Register</button>
+                    <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Application Section -->
+        <div id="main-section" class="section" style="display: none;">
+            <div class="container">
+                <div class="header">
+                    <h1>🏠 <span id="family-name">Family</span> Chore Tracker</h1>
+                    <div>
+                        <span id="user-info"></span>
+                        <button onclick="logout()" class="btn-logout">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-button active" onclick="showTab('chores')">Chores</button>
+                    <button class="tab-button" onclick="showTab('family')">Family Members</button>
+                    <button class="tab-button" onclick="showTab('defaults')">Default Chores</button>
+                </div>
+
+                <!-- Chores Tab -->
+                <div id="chores-tab" class="tab-content">
+                    <h2>Chore Schedule</h2>
+                    
+                    <div class="add-form">
+                        <h3>Add New Chore</h3>
+                        <input type="text" id="chore-name" placeholder="Chore name" required>
+                        <input type="number" id="chore-minutes" placeholder="Estimated minutes" required>
+                        <select id="chore-member">
+                            <option value="">Unassigned</option>
+                        </select>
+                        <input type="text" id="chore-schedule" placeholder="Schedule (e.g., Daily, Weekly)">
+                        <button onclick="addChore()">Add Chore</button>
+                    </div>
+
+                    <div class="filter-section">
+                        <label>
+                            <input type="checkbox" id="filter-pending" checked onchange="loadChores()"> Pending
+                        </label>
+                        <label>
+                            <input type="checkbox" id="filter-completed" onchange="loadChores()"> Completed
+                        </label>
+                    </div>
+
+                    <div id="chores-list" class="list"></div>
+                </div>
+
+                <!-- Family Members Tab -->
+                <div id="family-tab" class="tab-content" style="display: none;">
+                    <h2>Family Members</h2>
+                    
+                    <div class="add-form">
+                        <h3>Add Family Member</h3>
+                        <input type="text" id="member-name" placeholder="Member name" required>
+                        <button onclick="addFamilyMember()">Add Member</button>
+                    </div>
+
+                    <div id="members-list" class="list"></div>
+                </div>
+
+                <!-- Default Chores Tab -->
+                <div id="defaults-tab" class="tab-content" style="display: none;">
+                    <h2>Default Chore Templates</h2>
+                    <p class="info-text">Click on a default chore to add it to your schedule</p>
+                    <div id="default-chores-list" class="list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

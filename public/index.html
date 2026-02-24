@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Chore Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Family Chore Planner</h1>
+    <p>Keep chores private per family group with authenticated schedules and assignments.</p>
+
+    <section id="auth" class="card">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <input name="displayName" placeholder="Your name" required />
+        <input name="familyName" placeholder="Family name" required />
+        <input name="email" placeholder="Email" type="email" required />
+        <input name="password" placeholder="Password" type="password" required />
+        <button type="submit">Create Account</button>
+      </form>
+
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input name="email" placeholder="Email" type="email" required />
+        <input name="password" placeholder="Password" type="password" required />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="app" class="hidden">
+      <div class="card">
+        <h2 id="familyHeading"></h2>
+        <button id="loadDataBtn">Refresh Data</button>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <h3>Family Members</h3>
+          <ul id="membersList"></ul>
+          <form id="memberForm">
+            <input name="name" placeholder="Member name" required />
+            <input name="role" placeholder="Role (optional)" />
+            <button type="submit">Add Member</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h3>Chores (includes defaults)</h3>
+          <ul id="choresList"></ul>
+          <form id="choreForm">
+            <input name="title" placeholder="Chore title" required />
+            <input name="estimatedMinutes" type="number" min="1" placeholder="Minutes" required />
+            <button type="submit">Add Chore</button>
+          </form>
+        </section>
+      </div>
+
+      <section class="card">
+        <h3>Create Chore Schedule</h3>
+        <form id="scheduleForm">
+          <input name="name" placeholder="Schedule name (e.g., Weekday PM)" required />
+          <input name="date" type="date" required />
+          <p>Assignment (choose one chore and one member):</p>
+          <select name="choreId" id="scheduleChore" required></select>
+          <select name="memberId" id="scheduleMember" required></select>
+          <button type="submit">Create Schedule</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>Schedules</h3>
+        <div id="schedulesList"></div>
+      </section>
+    </section>
+
+    <p id="message"></p>
+    <p><a href="/admin.html">Open central admin portal</a></p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

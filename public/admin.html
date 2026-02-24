@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chores Admin Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Central iPhone Deployment Portal</h1>
+    <p>Generate private invitation links and manage enrolled devices.</p>
+
+    <section id="adminAuth" class="card">
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <input name="adminKey" type="password" placeholder="Admin portal key" required />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="adminPanel" class="hidden">
+      <section class="card">
+        <h2>Families</h2>
+        <button id="refreshFamiliesBtn">Refresh Families</button>
+        <ul id="familiesList"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Create Install Invitation</h2>
+        <form id="inviteForm">
+          <input name="familyId" type="number" min="1" placeholder="Family ID" required />
+          <input name="expiresHours" type="number" min="1" value="24" required />
+          <input name="maxInstalls" type="number" min="1" value="1" required />
+          <button type="submit">Create Invite</button>
+        </form>
+        <p id="inviteResult"></p>
+      </section>
+
+      <section class="card">
+        <h2>Enrolled Devices</h2>
+        <button id="refreshDevicesBtn">Refresh Devices</button>
+        <ul id="devicesList"></ul>
+      </section>
+    </section>
+
+    <p id="message"></p>
+    <p><a href="/">Back to family app</a></p>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
